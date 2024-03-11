@@ -28,6 +28,7 @@ jobs:
   # Integration test using molecule
   job:
     needs: changes
+    if: ${{ needs.changes.outputs.ethereum_node == 'true' }}
     concurrency:
       group: >-
         ${{ github.head_ref }}-ethereum-node-${{ matrix.consensus }}-${{ matrix.execution }}
